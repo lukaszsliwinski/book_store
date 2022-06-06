@@ -1,21 +1,33 @@
 import { useSelector, useDispatch } from "react-redux";
 import { cartActions } from "../store/cart-slice";
+import BookInCart from "./BookInCart";
 
 const Cart = () => {
-    const totalAmount = useSelector(state => state.cart.totalAmount)
+    const total = useSelector(state => state.cart.total)
+    const selectedBooks = useSelector(state => state.cart.selectedBooks)
     const dispatch = useDispatch();
-    const addBook = () => {
-        dispatch(cartActions.addBook());
-    }
     const removeBook = () => {
         dispatch(cartActions.removeBook());
     }
     
     return (
         <>
-            <div>{totalAmount}</div>
-            <button onClick={addBook}>+</button>
-            <button onClick={removeBook}>-</button>
+            <div>total: {total}</div>
+            <p>Selected books:</p>
+            <ul>
+                {selectedBooks.map(item => {
+                    return (
+                        <li key={item.id}>
+                            <BookInCart
+                                id={item.id}
+                                author={item.author}
+                                title={item.title}
+                                amount={item.amount}
+                            />
+                        </li>
+                    )
+                })}
+            </ul>
         </>
 
     )
