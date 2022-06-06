@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { searchActions } from "../store/search-slice";
-import Book from "./Book";
+import Books from "./Books";
 import axios from "axios";
 
 const Search = () => {
@@ -18,6 +18,7 @@ const Search = () => {
             .then(res => books = res.data.items)
             .catch(err => console.log(err))
         dispatch(searchActions.getBooks(books));
+        return true;
     }
 
     return(
@@ -31,7 +32,7 @@ const Search = () => {
                 />
                 <button onClick={() => getBooks()}>search</button>
             </div>
-            <div>{ <Book books={books} /> }</div>
+            <div>{ <Books booksData={books} /> }</div>
         </>
     )
 }
