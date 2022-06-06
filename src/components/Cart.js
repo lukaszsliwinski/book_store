@@ -3,7 +3,7 @@ import { cartActions } from "../store/cart-slice";
 import BookInCart from "./BookInCart";
 
 const Cart = () => {
-    const total = useSelector(state => state.cart.total)
+    const totalPrice = useSelector(state => state.cart.totalPrice)
     const selectedBooks = useSelector(state => state.cart.selectedBooks)
     const dispatch = useDispatch();
     const removeBook = () => {
@@ -12,7 +12,7 @@ const Cart = () => {
     
     return (
         <>
-            <div>total: {total}</div>
+            <div>total price: {totalPrice} zł</div>
             <p>Selected books:</p>
             <ul>
                 {selectedBooks.map(item => {

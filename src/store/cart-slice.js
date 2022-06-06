@@ -4,7 +4,7 @@ const cartSlice = createSlice({
     name: 'cart',
     initialState: {
         selectedBooks: [],
-        total: 0,
+        totalPrice: 0,
     },
 
     reducers: {
@@ -22,7 +22,7 @@ const cartSlice = createSlice({
                     amount: 1,
                 })
             }
-            state.total++;
+            state.totalPrice += 40;
         },
 
         removeBook(state, action) {
@@ -33,10 +33,7 @@ const cartSlice = createSlice({
             } else {
                 bookToRemove.amount--;
             }
-
-
-
-            if (state.total > 0) state.total--;
+            state.totalPrice -= 40;
         }
     }
 })
