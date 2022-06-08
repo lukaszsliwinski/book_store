@@ -1,5 +1,10 @@
-.img-position {
-    height: 200px;
+.card-img-top {
+    height: 100%;
+}
+
+
+.img-box {
+    margin: auto;
     width: fit-content;
-    margin: 20px auto 0;
+    height: 200px;
 }

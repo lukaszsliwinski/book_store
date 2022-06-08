@@ -18,8 +18,10 @@ const Book = ({id, author, title, imgSrc}) => {
     };
 
     return (
-        <div className="card" style={{width: '18rem',}}>
-            <img src={imgSrc} className="card-img-top img-position" alt="cover" />
+        <div className="card m-2" style={{width: '18rem',}}>
+            <div className="img-box">
+                <img src={imgSrc} className="card-img-top" alt="cover" />
+            </div>
             <div className="card-body">
                 <h5 className="card-title">{title}</h5>
                 <p className="card-text">{author}</p>
