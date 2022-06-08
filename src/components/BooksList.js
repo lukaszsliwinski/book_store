@@ -12,11 +12,17 @@ const BooksList = ({ booksData }) => {
                     coverUrl = "no-cover.png";
                 };
 
+                let price = 24.99;
+                try {
+                    price = item.saleInfo.listPrice.amount;
+                } catch {};
+
                 return (
                     <Book
                         id={item.etag}
                         author={item.volumeInfo.authors}
                         title={item.volumeInfo.title}
+                        price={price}
                         imgSrc={coverUrl}
                     />
                 )

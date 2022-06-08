@@ -1,18 +1,13 @@
-import { useSelector, useDispatch } from "react-redux";
-import { cartActions } from "../store/cart-slice";
+import { useSelector } from "react-redux";
 import BookInCart from "./BookInCart";
 
 const Cart = () => {
-    const totalPrice = useSelector(state => state.cart.totalPrice)
+    const totalPrice = useSelector(state => state.cart.totalPrice).toFixed(2);
     const selectedBooks = useSelector(state => state.cart.selectedBooks)
-    const dispatch = useDispatch();
-    const removeBook = () => {
-        dispatch(cartActions.removeBook());
-    }
     
     return (
         <>
-            <div>total price: {totalPrice} zł</div>
+            <div>Cart: {totalPrice} $</div>
             <p>Selected books:</p>
             <ul>
                 {selectedBooks.map(item => {

@@ -3,7 +3,7 @@ import { cartActions } from '../store/cart-slice';
 
 import './Book.css';
 
-const Book = ({id, author, title, imgSrc}) => {
+const Book = ({id, author, title, price, imgSrc}) => {
 
     const dispatch = useDispatch();
 
@@ -13,6 +13,7 @@ const Book = ({id, author, title, imgSrc}) => {
                 id,
                 author,
                 title,
+                price,
             })
         );
     };
@@ -25,7 +26,9 @@ const Book = ({id, author, title, imgSrc}) => {
             <div className="card-body">
                 <h5 className="card-title">{title}</h5>
                 <p className="card-text">{author}</p>
-                <a href="#" className="btn btn-primary" onClick={addBook}>buy</a>
+            </div>
+            <div className="card-footer">
+                <a href="#" className="btn btn-primary" onClick={addBook}>buy {price} $</a>
             </div>
         </div>
     );
