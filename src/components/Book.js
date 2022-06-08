@@ -1,9 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { cartActions } from '../store/cart-slice';
 
-import './Book.css';
-
-const Book = ({id, author, title, price, imgSrc}) => {
+const Book = ({id, authors, title, price, imgSrc}) => {
 
     const dispatch = useDispatch();
 
@@ -11,7 +9,7 @@ const Book = ({id, author, title, price, imgSrc}) => {
         dispatch(
             cartActions.addBook({
                 id,
-                author,
+                authors,
                 title,
                 price,
             })
@@ -19,16 +17,19 @@ const Book = ({id, author, title, price, imgSrc}) => {
     };
 
     return (
-        <div className="card m-2" style={{width: '18rem',}}>
-            <div className="img-box">
-                <img src={imgSrc} className="card-img-top" alt="cover" />
+        <div className="card m-2 text-white bg-dark mb-3" style={{width: '25rem',}}>
+            {console.log(authors)}
+            <div className="d-flex flex-row">
+                <div className="img-box m-3" style={{width: 'fit-content', height: '200px',}}>
+                    <img src={imgSrc} className="card-img-top h-100" alt="cover" />
+                </div>
+                <div className="m-2">
+                    <h5 className="card-title">{title}</h5>
+                    {authors.map(author => <p className="m-0">{author}</p>)}
+                </div>
             </div>
-            <div className="card-body">
-                <h5 className="card-title">{title}</h5>
-                <p className="card-text">{author}</p>
-            </div>
-            <div className="card-footer">
-                <a href="#" className="btn btn-primary" onClick={addBook}>buy {price} $</a>
+            <div className="card-footer text-right">
+                <a href="#" className="btn btn-danger" onClick={addBook}>buy {price} $</a>
             </div>
         </div>
     );

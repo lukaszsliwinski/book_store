@@ -15,7 +15,7 @@ const Cart = () => {
                         <li key={item.id}>
                             <BookInCart
                                 id={item.id}
-                                author={item.author}
+                                authors={item.authors}
                                 title={item.title}
                                 amount={item.amount}
                             />

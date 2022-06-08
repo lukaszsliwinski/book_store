@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { cartActions } from '../store/cart-slice';
 
-const BookInCart = ({ id, author, title, amount }) => {
+const BookInCart = ({ id, authors, title, amount }) => {
 
     const dispatch = useDispatch();
 
@@ -9,7 +9,7 @@ const BookInCart = ({ id, author, title, amount }) => {
         dispatch(
             cartActions.removeBook({
                 id,
-                author,
+                authors,
                 title,
                 amount,
             })
@@ -20,7 +20,7 @@ const BookInCart = ({ id, author, title, amount }) => {
 
     return (
         <>
-            <p>{author} - {title} x {amount}</p>
+            <p>{authors} - {title} x {amount}</p>
             <button onClick={removeBook}>remove</button>
         </>
     )

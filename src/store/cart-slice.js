@@ -17,7 +17,7 @@ const cartSlice = createSlice({
             } else {
                 state.selectedBooks.push({
                     id: newBook.id,
-                    author: newBook.author,
+                    authors: newBook.authors,
                     title: newBook.title,
                     price: newBook.price,
                     amount: 1,
@@ -34,10 +34,7 @@ const cartSlice = createSlice({
             } else {
                 bookToRemove.amount--;
             }
-            console.log(typeof state.totalPrice);
-            console.log(typeof bookToRemove.price);
             state.totalPrice -= bookToRemove.price;
-            console.log(typeof state.totalPrice);
         }
     }
 })

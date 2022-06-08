@@ -17,10 +17,15 @@ const BooksList = ({ booksData }) => {
                     price = item.saleInfo.listPrice.amount;
                 } catch {};
 
+                let authors = [];
+                item.volumeInfo.authors.map(author => {
+                    authors.push(author);
+                });
+
                 return (
                     <Book
                         id={item.etag}
-                        author={item.volumeInfo.authors}
+                        authors={authors}
                         title={item.volumeInfo.title}
                         price={price}
                         imgSrc={coverUrl}
