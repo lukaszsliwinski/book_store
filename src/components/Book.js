@@ -23,7 +23,7 @@ const Book = ({id, authors, title, price, imgSrc}) => {
                 <div className="img-box m-3" style={{width: 'fit-content', height: '200px',}}>
                     <img src={imgSrc} className="card-img-top h-100" alt="cover" />
                 </div>
-                <div className="m-2">
+                <div className="m-2 ml-auto w-50">
                     <h5 className="card-title">{title}</h5>
                     {authors.map(author => <p className="m-0">{author}</p>)}
                 </div>

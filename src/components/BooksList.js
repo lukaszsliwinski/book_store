@@ -18,9 +18,9 @@ const BooksList = ({ booksData }) => {
                 } catch {};
 
                 let authors = [];
-                item.volumeInfo.authors.map(author => {
-                    authors.push(author);
-                });
+                try {
+                    item.volumeInfo.authors.map(author => authors.push(author));
+                } catch {};
 
                 return (
                     <Book
