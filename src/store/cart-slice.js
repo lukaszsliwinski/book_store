@@ -1,10 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { notInitialized } from "react-redux/es/utils/useSyncExternalStore";
 
 const cartSlice = createSlice({
     name: 'cart',
     initialState: {
         selectedBooks: [],
         totalPrice: 0,
+        display: 'none',
     },
 
     reducers: {
@@ -35,6 +37,14 @@ const cartSlice = createSlice({
                 bookToRemove.amount--;
             }
             state.totalPrice -= bookToRemove.price;
+        },
+
+        showCart(state, action) {
+            const show = action.payload;
+            console.log('wykonuje się')
+            show ? state.display = "block" : state.display = "none";
+            console.log('show: ', show);
+            console.log('state: ', state.display);
         }
     }
 })

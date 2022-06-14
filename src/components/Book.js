@@ -18,7 +18,6 @@ const Book = ({id, authors, title, price, imgSrc}) => {
 
     return (
         <div className="card m-2 text-white bg-dark mb-3" style={{width: '25rem',}}>
-            {console.log(authors)}
             <div className="d-flex flex-row">
                 <div className="img-box m-3" style={{width: 'fit-content', height: '200px',}}>
                     <img src={imgSrc} className="card-img-top h-100" alt="cover" />
