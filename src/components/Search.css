@@ -1,0 +1,9 @@
+.form-control {
+    width: 40% !important;
+    padding: 1.5em 1em !important;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgb(225 83 97 / 50%) !important;
+    border-color: #bd2130 !important;
+}

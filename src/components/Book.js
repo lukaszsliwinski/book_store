@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { cartActions } from '../store/cart-slice';
+import './Book.css';
 
 const Book = ({id, authors, title, price, imgSrc}) => {
 
@@ -17,9 +18,9 @@ const Book = ({id, authors, title, price, imgSrc}) => {
     };
 
     return (
-        <div className="card m-2 text-white bg-dark mb-3" style={{width: '25rem',}}>
+        <div className="card m-2 text-white bg-dark mb-3">
             <div className="d-flex flex-row">
-                <div className="img-box m-3" style={{width: 'fit-content', height: '200px',}}>
+                <div className="img-box m-3">
                     <img src={imgSrc} className="card-img-top h-100" alt="cover" />
                 </div>
                 <div className="m-2 ml-auto w-50">

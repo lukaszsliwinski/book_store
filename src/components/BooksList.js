@@ -3,7 +3,7 @@ import Book from "./Book";
 
 const BooksList = ({ booksData }) => {
     return (
-        <div className="d-flex flex-wrap justify-content-around">
+        <div className="container d-flex flex-wrap justify-content-around">
             {booksData.map(item => {
                 let coverUrl = "";
                 try {
