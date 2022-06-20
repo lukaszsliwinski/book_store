@@ -6,7 +6,7 @@ const cartSlice = createSlice({
     initialState: {
         selectedBooks: [],
         totalPrice: 0,
-        display: 'none',
+        visible: false,
     },
 
     reducers: {
@@ -41,10 +41,8 @@ const cartSlice = createSlice({
 
         showCart(state, action) {
             const show = action.payload;
-            console.log('wykonuje się')
-            show ? state.display = "block" : state.display = "none";
-            console.log('show: ', show);
-            console.log('state: ', state.display);
+            show ? state.visible = true : state.visible = false;
+            console.log(state.visible);
         }
     }
 })
