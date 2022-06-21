@@ -9,6 +9,7 @@ const cartSlice = createSlice({
     },
 
     reducers: {
+        // Function for add book to cart
         addBook(state, action) {
             const newBook = action.payload;
             const existingBook = state.selectedBooks.find((item) => item.id === newBook.id);
@@ -28,6 +29,7 @@ const cartSlice = createSlice({
             }
         },
 
+        // Function for remove book from cart
         removeBook(state, action) {
             const newBook = action.payload;
             const bookToRemove = state.selectedBooks.find((item) => item.id === newBook.id);
@@ -39,11 +41,13 @@ const cartSlice = createSlice({
             state.totalPrice -= bookToRemove.price;
         },
 
-        showCart(state, action) {
+        // Function for show or hide cart depending on passed value (true or false)
+        showHideCart(state, action) {
             const show = action.payload;
             show ? state.visible = true : state.visible = false;
         },
 
+        // Function for remove all items from cart
         clearCart(state, action) {
             state.selectedBooks = [];
             state.totalPrice = 0;

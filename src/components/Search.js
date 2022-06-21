@@ -8,11 +8,13 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import './Search.css';
 
 const Search = () => {
+    // assign state to values
     const books = useSelector(state => state.search.books);
     const searchValue = useSelector(state => state.search.searchValue)
 
     const dispatch = useDispatch();
     
+    // Dispatch functions from search-slice
     const setSearchValue = (value) => dispatch(searchActions.setSearchValue(value));
 
     const getBooks = async () => {
@@ -25,6 +27,7 @@ const Search = () => {
 
     return(
         <>
+            {/* Search input */}
             <div className="d-flex justify-content-center my-5">
                 <input
                     type="text"
@@ -38,7 +41,11 @@ const Search = () => {
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>
             </div>
+
+            {/* Background photo */}
             <div className="bg-photo"></div>
+
+            {/* List of imported books */}
             <div>{ <BooksList booksData={books} /> }</div>
         </>
     )

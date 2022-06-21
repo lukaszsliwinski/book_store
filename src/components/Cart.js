@@ -7,31 +7,35 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import "./Cart.css";
 
 const Cart = () => {
+    // Assign state to values
     const totalPrice = Math.abs(Number(useSelector(state => state.cart.totalPrice))).toFixed(2);
     const selectedBooks = useSelector(state => state.cart.selectedBooks);
     const visible = useSelector(state => state.cart.visible);
 
     const dispatch = useDispatch();
 
+    // Dispatch functions from cart-slice
     const showCart = () => {
-        dispatch(cartActions.showCart(true));
+        dispatch(cartActions.showHideCart(true));
     };
 
     const hideCart = () => {
-        dispatch(cartActions.showCart(false));
+        dispatch(cartActions.showHideCart(false));
     };
 
     const submitOrder = () => {
-        dispatch(cartActions.showCart(false));
+        dispatch(cartActions.showHideCart(false));
         dispatch(cartActions.clearCart());
     };
     
     return (
         <>
+            {/* Button to show cart */}
             <button className="cart-button fixed-top btn btn-danger btn-lg m-3 ml-auto" onClick={showCart}>
                 <FontAwesomeIcon icon={faCartShopping} /> {totalPrice} $
             </button>
 
+            {/* Cart with selected items rendered as modal */}
             <Modal
                 show={visible} 
                 dialogClassName="cart-modal"
@@ -43,6 +47,8 @@ const Cart = () => {
                     <Modal.Title>Order summary</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+
+                    {/* Table with selected books */}
                     {selectedBooks.length !==0 && <>
                         <table className="table table-hover table-secondary">
                             <thead>
@@ -66,12 +72,15 @@ const Cart = () => {
                                     )
                                 })}
                             </tbody>
-
                         </table>
                     </>}
                     {selectedBooks.length === 0 && <p>Your cart is empty</p>}
                 </Modal.Body>
+
+                {/* Footer with total price and buttons to submit or cancel */}
                 <Modal.Footer>
+
+                    {/* Render only cancel button if there is no items in cart*/}
                     {selectedBooks.length !== 0 && <>
                         <p className="h5 mr-4">Total: {totalPrice} $</p>
                         <div>

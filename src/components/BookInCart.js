@@ -7,6 +7,7 @@ const BookInCart = ({ id, authors, title, price, amount }) => {
 
     const dispatch = useDispatch();
 
+    // Dispatch functions from cart-slice
     const addBook = () => {
         dispatch(cartActions.addBook({
             id,
@@ -22,6 +23,7 @@ const BookInCart = ({ id, authors, title, price, amount }) => {
 
     return (
         <tr>
+            {/* Render table row with info about selected book */}
             <td data-label="author(s):" className="align-middle">{authors.map(author => <div>{author}</div>)}</td>
             <td data-label="title:" className="align-middle"><div>{title}</div></td>
             <td data-label="price:" className="text-lg-center align-middle text-nowrap"><div>{price.toFixed(2)} $</div></td>

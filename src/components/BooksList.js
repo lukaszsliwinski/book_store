@@ -2,9 +2,14 @@ import Book from "./Book";
 
 
 const BooksList = ({ booksData }) => {
+
+    // Render card for every imported book
     return (
         <div className="container d-flex flex-wrap justify-content-around">
             {booksData.map(item => {
+
+                // Check if there is cover img in response data
+                // Set default if needed
                 let coverUrl = "";
                 try {
                     coverUrl = item.volumeInfo.imageLinks.thumbnail;
@@ -12,6 +17,8 @@ const BooksList = ({ booksData }) => {
                     coverUrl = "no-cover.png";
                 };
 
+                // Check if there is price in response data
+                // Set default if needed
                 let price = 24.99;
                 try {
                     price = item.saleInfo.listPrice.amount;

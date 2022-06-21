@@ -6,6 +6,7 @@ const Book = ({id, authors, title, price, imgSrc}) => {
 
     const dispatch = useDispatch();
 
+    // Dispatch function from cart-slice
     const addBook = () => {
         dispatch(cartActions.addBook({
             id,
@@ -15,6 +16,7 @@ const Book = ({id, authors, title, price, imgSrc}) => {
         }));
     };
 
+    // Render book card
     return (
         <div className="card m-2 text-white bg-dark mb-3">
             <div className="d-flex flex-row">
