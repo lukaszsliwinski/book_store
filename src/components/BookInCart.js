@@ -22,15 +22,15 @@ const BookInCart = ({ id, authors, title, price, amount }) => {
 
     return (
         <tr>
-            <td className="align-middle">{authors.map(author => <p className="m-0">{author}</p>)}</td>
-            <td className="align-middle">{title}</td>
-            <td className="text-center align-middle">{price.toFixed(2)} $</td>
-            <td className="text-center align-middle">{amount}</td>
-            <td className="text-center align-middle">
-                <button className="btn btn-sm btn-danger" onClick={addBook}><FontAwesomeIcon icon={faPlus} /></button>
-            </td>
-            <td className="text-center align-middle">
-                <button className="btn btn-sm btn-danger" onClick={removeBook}><FontAwesomeIcon icon={faMinus} /></button>
+            <td data-label="author(s):" className="align-middle">{authors.map(author => <div>{author}</div>)}</td>
+            <td data-label="title:" className="align-middle"><div>{title}</div></td>
+            <td data-label="price:" className="text-lg-center align-middle text-nowrap"><div>{price.toFixed(2)} $</div></td>
+            <td data-label="amount:" className="text-lg-center align-middle text-nowrap">
+                <div>
+                    <button className="btn btn-sm btn-danger" onClick={addBook}><FontAwesomeIcon icon={faPlus} /></button>
+                    <span className="mx-2 h6">{amount}</span>
+                    <button className="btn btn-sm btn-danger" onClick={removeBook}><FontAwesomeIcon icon={faMinus} /></button>
+                </div>
             </td>
         </tr>
     )

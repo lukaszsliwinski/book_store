@@ -14,3 +14,38 @@
 .cart-modal .modal-footer {
     border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
+
+/* responsive table in cart */
+
+@media(max-width: 991.5px) {
+	table thead {
+		display: none;
+	}
+
+	table, table tbody, table tr, table td{
+		display: block;
+	}
+
+	table tr {
+		border-bottom: 8px solid #343a40;
+	}
+
+	table td {
+		position: relative;
+        overflow-wrap: break-word;
+	}
+
+	table td::before{
+		content: attr(data-label);
+		position: absolute;
+		left:0;
+		padding-left: 15px;
+		font-weight: bold;
+	}
+
+    td div {
+        margin-left: auto;
+        width: 75%;
+        max-width: calc(100% - 85px);
+    }
+}

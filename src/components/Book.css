@@ -6,3 +6,7 @@
     width: fit-content;
     height: 200px;
 }
+
+.card-footer {
+    margin-top: auto;
+}

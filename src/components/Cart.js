@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { cartActions } from '../store/cart-slice';
 import BookInCart from "./BookInCart";
-import { Modal, CloseButton } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import "./Cart.css";
@@ -28,7 +28,7 @@ const Cart = () => {
     
     return (
         <>
-            <div className="w-100 d-flex justify-content-end">
+            <div className="fixed-top w-100 d-flex justify-content-end">
                 <button className="btn btn-danger btn-lg m-3" onClick={showCart}>
                     <FontAwesomeIcon icon={faCartShopping} /> {totalPrice} $
                 </button>
@@ -53,8 +53,6 @@ const Cart = () => {
                                     <th scope="col">title</th>
                                     <th className="text-center" scope="col">price</th>
                                     <th className="text-center" scope="col">amount</th>
-                                    <th className="text-center" scope="col">add</th>
-                                    <th className="text-center" scopr="col">remove</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -78,9 +76,12 @@ const Cart = () => {
                 <Modal.Footer>
                     {selectedBooks.length !== 0 && <>
                         <p className="h5 mr-4">Total: {totalPrice} $</p>
-                        <button className="btn btn-danger" onClick={submitOrder}>Submit your order</button>
+                        <div>
+                            <button className="btn btn-danger m-1" onClick={submitOrder}>Submit your order</button>
+                            <button className="btn btn-danger m-1" onClick={hideCart}>Cancel</button>
+                        </div>
                     </>}
-                    <button className="btn btn-danger" onClick={hideCart}>Cancel</button>
+                    {selectedBooks.length === 0 && <button className="btn btn-danger" onClick={hideCart}>Cancel</button>}
                 </Modal.Footer>
             </Modal>
         </>
