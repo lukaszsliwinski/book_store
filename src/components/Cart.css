@@ -1,0 +1,16 @@
+.cart-modal {
+    min-width: 80vw;
+    color:white;
+}
+
+.cart-modal .modal-content {
+    background-color: #343a40;
+}
+
+.cart-modal .modal-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.cart-modal .modal-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+}

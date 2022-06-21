@@ -7,14 +7,12 @@ const Book = ({id, authors, title, price, imgSrc}) => {
     const dispatch = useDispatch();
 
     const addBook = () => {
-        dispatch(
-            cartActions.addBook({
-                id,
-                authors,
-                title,
-                price,
-            })
-        );
+        dispatch(cartActions.addBook({
+            id,
+            authors,
+            title,
+            price,
+        }));
     };
 
     return (
@@ -29,7 +27,7 @@ const Book = ({id, authors, title, price, imgSrc}) => {
                 </div>
             </div>
             <div className="card-footer text-right">
-                <a href="#" className="btn btn-danger" onClick={addBook}>buy {price} $</a>
+                <a href="#" className="btn btn-danger" onClick={addBook}>buy {price.toFixed(2)} $</a>
             </div>
         </div>
     );

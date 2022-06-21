@@ -1,60 +1,86 @@
 import { useSelector, useDispatch } from "react-redux";
 import { cartActions } from '../store/cart-slice';
 import BookInCart from "./BookInCart";
-import { Modal } from "react-bootstrap";
+import { Modal, CloseButton } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import "./Cart.css";
 
 const Cart = () => {
-    const totalPrice = useSelector(state => state.cart.totalPrice).toFixed(2);
+    const totalPrice = Math.abs(Number(useSelector(state => state.cart.totalPrice))).toFixed(2);
     const selectedBooks = useSelector(state => state.cart.selectedBooks);
     const visible = useSelector(state => state.cart.visible);
 
     const dispatch = useDispatch();
 
     const showCart = () => {
-        dispatch(
-            cartActions.showCart(true)
-        );
+        dispatch(cartActions.showCart(true));
     };
 
     const hideCart = () => {
-        dispatch(
-            cartActions.showCart(false)
-        );
+        dispatch(cartActions.showCart(false));
+    };
+
+    const submitOrder = () => {
+        dispatch(cartActions.showCart(false));
+        dispatch(cartActions.clearCart());
     };
     
     return (
         <>
             <div className="w-100 d-flex justify-content-end">
-                <button className="btn btn-danger btn-lg m-3" onClick={showCart} data-bs-toggle="modal" data-bs-target="#modalCart">
+                <button className="btn btn-danger btn-lg m-3" onClick={showCart}>
                     <FontAwesomeIcon icon={faCartShopping} /> {totalPrice} $
                 </button>
             </div>
 
-            <Modal show={visible} onHide={hideCart}>
-                <Modal.Header closeButton>
+            <Modal
+                show={visible} 
+                dialogClassName="cart-modal"
+                onHide={hideCart}
+                backdrop="static"
+                keyboard={false}
+            >
+                <Modal.Header>
                     <Modal.Title>Order summary</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <ul>
-                        {selectedBooks.map(item => {
-                            return (
-                                <li key={item.id}>
-                                    <BookInCart
-                                        id={item.id}
-                                        authors={item.authors}
-                                        title={item.title}
-                                        amount={item.amount}
-                                    />
-                                </li>
-                            )
-                        })}
-                        <button onClick={hideCart}>Submit your order</button>
-                    </ul>
+                    {selectedBooks.length !==0 && <>
+                        <table className="table table-hover table-secondary">
+                            <thead>
+                                <tr>
+                                    <th scope="col">author(s)</th>
+                                    <th scope="col">title</th>
+                                    <th className="text-center" scope="col">price</th>
+                                    <th className="text-center" scope="col">amount</th>
+                                    <th className="text-center" scope="col">add</th>
+                                    <th className="text-center" scopr="col">remove</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {selectedBooks.map(item => {
+                                    return (
+                                        <BookInCart
+                                            id={item.id}
+                                            authors={item.authors}
+                                            title={item.title}
+                                            price={item.price}
+                                            amount={item.amount}
+                                        />
+                                    )
+                                })}
+                            </tbody>
+
+                        </table>
+                    </>}
+                    {selectedBooks.length === 0 && <p>Your cart is empty</p>}
                 </Modal.Body>
                 <Modal.Footer>
-                    Modal footer
+                    {selectedBooks.length !== 0 && <>
+                        <p className="h5 mr-4">Total: {totalPrice} $</p>
+                        <button className="btn btn-danger" onClick={submitOrder}>Submit your order</button>
+                    </>}
+                    <button className="btn btn-danger" onClick={hideCart}>Cancel</button>
                 </Modal.Footer>
             </Modal>
         </>

@@ -11,13 +11,12 @@ const Search = () => {
     const searchValue = useSelector(state => state.search.searchValue)
 
     const dispatch = useDispatch();
-
     
     const setSearchValue = (value) => dispatch(searchActions.setSearchValue(value));
 
     const getBooks = async () => {
         let books = [];
-        await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchValue}&key=AIzaSyAibzWNKTvyt_UhKz34hBNWY5TvlOvz4EQ&maxResults=20`)
+        await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchValue}&key=AIzaSyAibzWNKTvyt_UhKz34hBNWY5TvlOvz4EQ&maxResults=40`)
             .then(res => books = res.data.items)
             .catch(err => console.log(err))
         dispatch(searchActions.getBooks(books));
@@ -38,6 +37,7 @@ const Search = () => {
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>
             </div>
+            <div className="bg-photo"></div>
             <div>{ <BooksList booksData={books} /> }</div>
         </>
     )

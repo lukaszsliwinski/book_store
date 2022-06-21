@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { notInitialized } from "react-redux/es/utils/useSyncExternalStore";
 
 const cartSlice = createSlice({
     name: 'cart',
@@ -16,6 +15,7 @@ const cartSlice = createSlice({
 
             if (existingBook) {
                 existingBook.amount++;
+                state.totalPrice += existingBook.price;
             } else {
                 state.selectedBooks.push({
                     id: newBook.id,
@@ -24,8 +24,8 @@ const cartSlice = createSlice({
                     price: newBook.price,
                     amount: 1,
                 })
+                state.totalPrice += newBook.price;
             }
-            state.totalPrice += newBook.price;
         },
 
         removeBook(state, action) {
@@ -42,8 +42,12 @@ const cartSlice = createSlice({
         showCart(state, action) {
             const show = action.payload;
             show ? state.visible = true : state.visible = false;
-            console.log(state.visible);
-        }
+        },
+
+        clearCart(state, action) {
+            state.selectedBooks = [];
+            state.totalPrice = 0;
+        },
     }
 })
 
