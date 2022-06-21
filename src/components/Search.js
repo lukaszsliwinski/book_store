@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { searchActions } from "../store/search-slice";
 import BooksList from "./BooksList";
 import axios from "axios";
+import env from "react-dotenv";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import './Search.css';
@@ -16,7 +17,7 @@ const Search = () => {
 
     const getBooks = async () => {
         let books = [];
-        await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchValue}&key=AIzaSyAibzWNKTvyt_UhKz34hBNWY5TvlOvz4EQ&maxResults=40`)
+        await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchValue}&key=${env.API_KEY}&maxResults=40`)
             .then(res => books = res.data.items)
             .catch(err => console.log(err))
         dispatch(searchActions.getBooks(books));
