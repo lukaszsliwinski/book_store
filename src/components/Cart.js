@@ -28,11 +28,9 @@ const Cart = () => {
     
     return (
         <>
-            <div className="fixed-top w-100 d-flex justify-content-end">
-                <button className="btn btn-danger btn-lg m-3" onClick={showCart}>
-                    <FontAwesomeIcon icon={faCartShopping} /> {totalPrice} $
-                </button>
-            </div>
+            <button className="cart-button fixed-top btn btn-danger btn-lg m-3 ml-auto" onClick={showCart}>
+                <FontAwesomeIcon icon={faCartShopping} /> {totalPrice} $
+            </button>
 
             <Modal
                 show={visible} 

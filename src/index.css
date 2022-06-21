@@ -18,7 +18,6 @@ html::-webkit-scrollbar-track {
 
 body {
   margin: 0;
-  height: 100vh;
   background-color: #343a4033 !important;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
