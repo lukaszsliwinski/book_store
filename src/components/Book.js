@@ -27,7 +27,7 @@ const Book = ({id, authors, title, price, imgSrc}) => {
                 </div>
             </div>
             <div className="card-footer text-right">
-                <a href="#" className="btn btn-danger" onClick={addBook}>buy {price.toFixed(2)} $</a>
+                <button className="btn btn-danger" onClick={addBook}>buy {price.toFixed(2)} $</button>
             </div>
         </div>
     );
