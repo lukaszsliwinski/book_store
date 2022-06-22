@@ -18,3 +18,8 @@
     box-shadow: 0 0 0 0.2rem rgb(225 83 97 / 50%) !important;
     border-color: #bd2130 !important;
 }
+
+.input-position {
+    margin-top: 85px;
+    margin-bottom: 50px;
+}

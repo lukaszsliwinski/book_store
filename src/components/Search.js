@@ -28,7 +28,7 @@ const Search = () => {
     return(
         <>
             {/* Search input */}
-            <div className="d-flex justify-content-center my-5">
+            <div className="d-flex justify-content-center input-position">
                 <input
                     type="text"
                     className="form-control"
